@@ -12,4 +12,9 @@
   font-size: 18px;
   line-height: 22px;
   cursor: pointer;
+  transition: opacity 0.5s ease;
+  opacity: 1;
+}
+.popup__save:hover {
+  opacity: 0.6;
 }

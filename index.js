@@ -7,23 +7,24 @@ let popupSave = popup.querySelector('.popup__form');
 let nameInput = popup.querySelector('#name');
 let hobbyInput = popup.querySelector('#hobby');
 
-function popupOpened(){
-  popup.classList.add('popup_opened');
+function openPopup(){
   nameInput.value = name.textContent;
   hobbyInput.value = hobby.textContent;
+  popup.classList.add('popup_opened');
+
 }
-function popupClosed(){
+function closePopup(){
   popup.classList.remove('popup_opened');
 }
-function popupSubmitHandler(event) {
+function handlePopupSubmit(event) {
   event.preventDefault()
   name.textContent = nameInput.value;
   hobby.textContent = hobbyInput.value;
-  popupClosed ()
+  closePopup();
 }
-popupOpen.addEventListener('click', popupOpened);
-popupClose.addEventListener('click', popupClosed);
-popupSave.addEventListener('submit', popupSubmitHandler);
+popupOpen.addEventListener('click', openPopup);
+popupClose.addEventListener('click', closePopup);
+popupSave.addEventListener('submit', handlePopupSubmit);
 
 
 

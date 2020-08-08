@@ -10,24 +10,24 @@
   <div class="page">
     <header class="header">
       <img src="./images/logo.svg" alt="Место" class="header__logo">
-      <div class="header__line"></div>
     </header>
-    <section class="profile">
+    <main>
+      <section class="profile">
         <img src="./images/image.jpg" alt="Жак-Ив Кусто" class="profile__avatar">
         <div class="profile__info">
-         <div class="profile__text">
-          <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <p class="profile__hobby">Исследователь океана</p>
-        </div>
-        <button type="button" class="profile__edit" aria-label="Редактировать"></button>
+          <div class="profile__text">
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <p class="profile__hobby">Исследователь океана</p>
+          </div>
+          <button type="button" class="profile__edit" aria-label="Редактировать"></button>
         </div>
         <button type="button" class="profile__addButton" aria-label="Добавить">+</button>
-    </section>
-    <section class="elements">
+      </section>
+      <section class="elements">
         <article class="element">
           <img src="./images/moscow.jpg" alt="Москва" class="element__foto" >
           <div class="element__position">
-            <p class="element__text">Москва</p>
+            <h2 class="element__text">Москва</h2>
             <img src="./images/like.svg" alt="like" class="element__like">
           </div>
         </article>
@@ -36,56 +36,53 @@
           <div class="element__position">
             <p class="element__text">Ростов</p>
             <img src="./images/like.svg" alt="like" class="element__like">
-        </div>
+          </div>
         </article>
         <article class="element">
           <img src="./images/sochi.jpg" alt="Сочи" class="element__foto" >
           <div class="element__position">
-            <p class="element__text">Сочи</p>
+            <h2 class="element__text">Сочи</h2>
             <img src="./images/like.svg" alt="like" class="element__like">
           </div>
         </article>
         <article class="element">
           <img src="./images/vladimir.jpg" alt="Владимир" class="element__foto" >
           <div class="element__position">
-            <p class="element__text">Владимир</p>
+            <h2 class="element__text">Владимир</h2>
             <img src="./images/like.svg" alt="like" class="element__like">
           </div>
         </article>
         <article class="element">
           <img src="./images/nizhniy.jpg" alt="Нижний-Новгород" class="element__foto" >
           <div class="element__position">
-            <p class="element__text">Нижний-Новгород</p>
+            <h2 class="element__text">Нижний-Новгород</h2>
             <img src="./images/like.svg" alt="like" class="element__like">
           </div>
         </article>
         <article class="element">
           <img src="./images/kostroma.jpg" alt="Кострома" class="element__foto" >
           <div class="element__position">
-            <p class="element__text">Кострома</p>
+            <h2 class="element__text">Кострома</h2>
             <img src="./images/like.svg" alt="like" class="element__like">
           </div>
         </article>
-    </section>
-   <footer class="footer">
-     <h3 class="footer__copyright">© 2020 Mesto Russia</h3>
+      </section>
+    </main>
+    <footer class="footer">
+      <span class="footer__copyright">&COPY; 2020 Mesto Russia</span>
     </footer>
-   <div class="popup">
+    <div class="popup">
       <div class="popup__container">
         <button type="button" class="popup__close" aria-label="Закрыть Окно"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="popup__form" name="edit-profile" type="submit">
-          <div class="popup__input-container">
-            <input type="text" id="name" class="popup__name"  placeholder="Введите имя">
-          </div>
-          <div class="popup__input-container">
-            <input type="text" id="hobby" class="popup__hobby" placeholder="Ваше хобби">
-          </div>
-          <button type="submit"
-          class="popup__save">Сохранить</button>
+        <form class="popup__form" name="edit-profile">
+          <input name="name" type="text" id="name" class="popup__input popup__input_name"  placeholder="Введите имя" required>
+          <input name="hobby" type="text" id="hobby" class="popup__input popup__input_hobby" placeholder="Ваше хобби" required>
+          <button type="submit" class="popup__save">Сохранить</button>
         </form>
       </div>
-     </div>
-   <script src="./script.js"></script>
+    </div>
+  </div>
+<script src="./index.js"></script>
 </body>
 </html>
