@@ -1,6 +1,7 @@
 @import url(../element/__foto/element__foto.css);
 @import url(../element/__position/element__position.css);
 @import url(../element/__text/element__text.css);
+@import url(../element/__like/element__like.css);
 .element {
   margin: 0;
   padding: 0;

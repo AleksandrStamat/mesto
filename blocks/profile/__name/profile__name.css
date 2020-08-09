@@ -1,4 +1,5 @@
 .profile__name {
+  padding-top: 22px;
   max-width: 295px;
   margin: 0;
   font-family: Inter;
@@ -12,7 +13,7 @@
 }
 @media screen and (max-width: 900px) {
 .profile__name {
-  padding: 0;
+  padding-top: 10px;
   font-size: 27px;
 }
 }

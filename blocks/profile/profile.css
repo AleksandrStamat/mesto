@@ -1,5 +1,4 @@
-@import url(../profile/__addButton/profile__addButton.css);
-@import url(../profile/__addButton/_plus/profile__addButton_plus.css);
+@import url(../profile/__add-button/profile__add-button.css);
 @import url(../profile/__avatar/profile__avatar.css);
 @import url(../profile/__info/profile__info.css);
 @import url(../profile/__edit/profile__edit.css);
@@ -11,12 +10,13 @@
   max-width: 882px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-start;
   
 }
 @media screen and (max-width: 900px) {
 .profile {
+  padding-top: 38px;
   flex-direction: column;
   align-items: center;
 }
