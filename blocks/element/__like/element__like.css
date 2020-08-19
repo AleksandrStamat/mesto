@@ -1,4 +1,6 @@
+@import url(./_active/element__like_active.css);
 .element__like {
+  padding: 0;
   background-color: #ffffff;
   border: 0;
   transition: opacity 0.5s ease;

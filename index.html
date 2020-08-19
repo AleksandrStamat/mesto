@@ -26,91 +26,44 @@
         <button type="button" class="profile__add-button" aria-label="Добавить">+</button>
       </section>
       <section class="elements">
-        <article class="element">
-          <div>
-            <button type="button" class="element__trash"><img src="./images/trash.svg" alt="trash"></button>
-            <img src="./images/moscow.jpg" alt="Москва" class="element__foto" >
-          </div>
-          <div class="element__position">
-            <h2 class="element__text">Москва</h2>
-            <button type="button" class="element__like"><img src="./images/like.svg" alt="like"></button>
-          </div>
-        </article>
-        <article class="element">
-          <div>
-            <button type="button" class="element__trash"><img src="./images/trash.svg" alt="trash"></button>
-            <img src="./images/rostov.jpg" alt="Ростов" class="element__foto" >
-          </div>
-          <div class="element__position">
-            <h2 class="element__text">Ростов</h2>
-            <button type="button" class="element__like"><img src="./images/like.svg" alt="like"></button>
-          </div>
-        </article>
-        <article class="element">
-          <div>
-            <button type="button" class="element__trash"><img src="./images/trash.svg" alt="trash"></button>
-            <img src="./images/sochi.jpg" alt="Сочи" class="element__foto" >
-          </div>
-          <div class="element__position">
-            <h2 class="element__text">Сочи</h2>
-            <button type="button" class="element__like"><img src="./images/like.svg" alt="like"></button>
-          </div>
-        </article>
-        <article class="element">
-          <div>
-            <button type="button" class="element__trash"><img src="./images/trash.svg" alt="trash"></button>
-            <img src="./images/vladimir.jpg" alt="Владимир" class="element__foto" >
-          </div>
-          <div class="element__position">
-            <h2 class="element__text">Владимир</h2>
-            <button type="button" class="element__like"><img src="./images/like.svg" alt="like"></button>
-          </div>
-        </article>
-        <article class="element">
-          <div>
-            <button type="button" class="element__trash"><img src="./images/trash.svg" alt="trash"></button>
-            <img src="./images/nizhniy.jpg" alt="Нижний-Новгород" class="element__foto" >
-          </div>
-          <div class="element__position">
-            <h2 class="element__text">Нижний-Новгород</h2>
-            <button type="button" class="element__like"><img src="./images/like.svg" alt="like"></button>
-          </div>
-        </article>
-        <article class="element">
-          <div>
-            <button type="button" class="element__trash"><img src="./images/trash.svg" alt="trash"></button>
-            <img src="./images/kostroma.jpg" alt="Кострома" class="element__foto" >
-          </div>
-          <div class="element__position">
-            <h2 class="element__text">Кострома</h2>
-            <button type="button" class="element__like"><img src="./images/like.svg" alt="like"></button>
-          </div>
-        </article>
+        <template id="templateElement" class="templateElement">
+          <article class="element">
+            <div>
+              <button type="button" class="element__trash"><img src="./images/trash.svg" alt="trash"></button>
+              <img class="element__foto">
+            </div>
+            <div class="element__position">
+              <h2 class="element__text"></h2>
+              <button type="button" class="element__like"><img src="./images/like.svg" alt="like"></button>
+            </div>
+          </article>
+        </template>
+        
       </section>
     </main>
     <footer class="footer">
       <span class="footer__copyright">&COPY; 2020 Mesto Russia</span>
     </footer>
-    <div class="popup">
+    <div class="popup popup-profile">
       <div class="popup__container">
-        <button type="button" class="popup__close" aria-label="Закрыть Окно"></button>
+        <button type="button" id="popup-profile-close" class="popup__button-close" aria-label="Закрыть Окно"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="popup__form" name="edit-profile">
+        <form class="popup__form" id="#edit-profile" name="edit-profile">
           <input name="name" type="text" id="name" class="popup__input popup__input_name"  placeholder="Введите имя" required>
           <input name="hobby" type="text" id="hobby" class="popup__input popup__input_hobby" placeholder="Ваше хобби" required>
-          <button type="submit" class="popup__save">Сохранить</button>
+          <button type="submit" id="popup-profile-save" class="popup__button-save">Сохранить</button>
         </form>
       </div>
     </div>
 
-    <div class="popup-item">
+    <div class="popup popup-item">
       <div class="popup__container">
-        <button type="button" class="popup-item__close" aria-label="Закрыть Окно"></button>
+        <button type="button" id="popup-item-close" class="popup__button-close" aria-label="Закрыть Окно"></button>
         <h2 class="popup__title">Новое место</h2>
-        <form class="popup__form" name="add-item">
+        <form class="popup__form" id="add-item" name="add-item">
           <input name="place" type="text" id="place" class="popup__input popup__input_place"  placeholder="Название" required>
           <input name="link" type="text" id="link" class="popup__input popup__input_link" placeholder="Ссылка на картинку" required>
-          <button type="submit" class="popup-item__save">Создать</button>
+          <button type="submit" id="popup-item-save" class="popup__button-save">Создать</button>
         </form>
       </div>
     </div>

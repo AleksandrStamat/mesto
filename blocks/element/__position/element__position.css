@@ -1,7 +1,7 @@
 .element__position {
   margin: 25px 22.24px 31px 21px;
   display: flex;
-  max-width: 246px;
+  min-width: 246px;
   flex-direction: row;
   justify-content: space-between;
 }
