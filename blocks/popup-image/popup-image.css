@@ -1,0 +1,6 @@
+@import url(./__element/popup-image__element.css);
+.popup-image__container{
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+}

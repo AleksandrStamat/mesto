@@ -1,8 +1,11 @@
-@import url(./_active/element__like_active.css);
 .element__like {
+  height: 18.13px; 
+  width: 20.76px;
+  border: none;
   padding: 0;
-  background-color: #ffffff;
-  border: 0;
+  margin: 0;
+  background-color: #FFFFFF;
+  background-image: url(../../../images/vector.svg);
   transition: opacity 0.5s ease;
   opacity: 1;
   cursor: pointer;

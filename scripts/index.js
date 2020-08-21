@@ -45,54 +45,61 @@ popupItemSave.addEventListener('submit',handlePopupSubmitItem);// слушате
 
 const initialCards = [
   {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+      name: 'Байкал',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   },
   {
       name: 'Холмогорский район',
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
   },
   {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+      name: 'Камчатка',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+      name: 'Иваново',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+      name: 'Челябинская область',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+      name: 'Архыз',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
   }
 ];
-let elementContainer = document.querySelector('.elements');
-let elementCreate = element => {
-  let cardElement = document.querySelector('#templateElement').content.cloneNode(true);
+
+const elementContainer = document.querySelector('.elements');
+const addForm = document.querySelector('#add-item')
+  const elementCreate = element =>{                // функция добавления карточки
+  const cardElement = document.querySelector('#templateElement').content.cloneNode(true);
   cardElement.querySelector('.element__text').textContent = element.name;
   cardElement.querySelector('.element__foto').src = element.link;
-  elementContainer.append(cardElement);
+  cardElement.querySelector('.element__trash').addEventListener('click', evt => {
+    const trash = event.target.closest('.element');         //удаление карточки
+    trash.remove()
+  })
+  const likeButton = cardElement.querySelector('.element__like');   //лайк
+  function likeBtn (evt) {
+    evt.target.classList.toggle('element__like_active')
+  } 
+  likeButton.addEventListener('click',likeBtn);
+
+  elementContainer.prepend(cardElement);
 }
 initialCards.forEach(elementCreate);
 
-
-let placeInput = document.querySelector('#place'); // кнопка "Добавить"
-let linkInput = document.querySelector('#link'); // кнопка "Добавить"
-let addForm = document.querySelector('#add-item');
-let addElement = evt => {
-  evt.preventDefault();
-  let placeValue = placeInput.value;
-  let linkValue = linkInput.value;
-  let newElement = {name: placeValue, link: linkValue};
+const placeInput = document.querySelector('#place'); // 
+const linkInput = document.querySelector('#link'); 
+addForm.addEventListener('submit', evt => {         // функция созданя карточки
+  event.preventDefault();
+  const placeValue = placeInput.value;
+  const linkValue = linkInput.value;
+  const newElement = {name: placeValue, link: linkValue};
   elementCreate(newElement);
-}
-addForm.addEventListener('submit', addElement);
-
-
-
+  addForm.reset ()
+})
 
 
 
