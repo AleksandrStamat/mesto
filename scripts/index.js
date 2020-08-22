@@ -34,12 +34,12 @@ const popupProfile = document.querySelector(".popup-profile");
 const popupItem = document.querySelector(".popup-item");
 const popupImage = document.querySelector(".popup-image");
 
-const profileName = document.querySelector(".profile__name");
-const hobby = document.querySelector(".profile__hobby");
-const placeInput = document.querySelector("#place");
-const linkInput = document.querySelector("#link");
-const nameInput = document.querySelector("#name");
-const hobbyInput = document.querySelector("#hobby");
+let profileName = document.querySelector(".profile__name");
+let hobby = document.querySelector(".profile__hobby");
+let placeInput = document.querySelector("#place");
+let linkInput = document.querySelector("#link");
+let nameInput = document.querySelector("#name");
+let hobbyInput = document.querySelector("#hobby");
 
 const elementContainer = document.querySelector(".elements");
 const addForm = document.querySelector("#add-item");
@@ -58,14 +58,12 @@ const popupSave = document.querySelector(".popup__form");
 const popupItemSave = document.querySelector("#add-item"); // кнопка сохранения попапа "Добавить"
 
 function openPopup(popup) {
-  popup.classList.add("popup_opened");
-}
-
-function editProfileForm() {
+  if (popup === popupProfile){
   nameInput.value = profileName.textContent;
   hobbyInput.value = hobby.textContent;
-  openPopup(popupProfile);
-}
+  }
+  popup.classList.add("popup_opened");
+} 
 
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
