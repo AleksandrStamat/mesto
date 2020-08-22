@@ -1,5 +1,5 @@
 .popup-image__element {
-  border-radius: 20px;
-  max-width: 80vw;
-  max-height: 80vh; 
+max-width: 75vw;
+max-height: 75vh;
+overflow: hidden;
 }

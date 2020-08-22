@@ -1,106 +1,143 @@
-let popup = document.querySelector('.popup-profile');
-let popupItem = document.querySelector('.popup-item')
-let popupOpen = document.querySelector('.profile__edit');
-let popupItemOpen = document.querySelector('.profile__add-button') // кнопка открытия попапа "Добавить"
-let popupClose = popup.querySelector('#popup-profile-close');
-let popupItemClose = document.querySelector('#popup-item-close') // кнопка закрытия попапа "Добавить"
-let name = document.querySelector('.profile__name');
-let hobby = document.querySelector('.profile__hobby');
-let popupSave = popup.querySelector('.popup__form');
-let popupItemSave = document.querySelector('#add-item'); // кнопка сохранения попапа "Добавить"
-let nameInput = popup.querySelector('#name'); 
-let hobbyInput = popup.querySelector('#hobby');
-
-function openPopup(){
-  nameInput.value = name.textContent;
-  hobbyInput.value = hobby.textContent;
-  popup.classList.add('popup-profile_opened');
-}
-function closePopup(){
-  popup.classList.remove('popup-profile_opened');
-}
-function handlePopupSubmit(event) {
-  event.preventDefault()
-  name.textContent = nameInput.value;
-  hobby.textContent = hobbyInput.value;
-  closePopup();
-}
-function handlePopupSubmitItem(evt) { // кнопка "Добавить"
-  event.preventDefault()
-  closeItemPopup();
-}
-
-function openPopupItem(){                     // кнопка "Добавить"
-  popupItem.classList.add('popup-item_opened'); // кнопка "Добавить"
-}
-function closeItemPopup(){
-  popupItem.classList.remove('popup-item_opened'); // кнопка "Добавить"
-}
-popupOpen.addEventListener('click', openPopup);
-popupItemOpen.addEventListener('click', openPopupItem); // слушатель попапа "Добавить"
-popupClose.addEventListener('click', closePopup);
-popupItemClose.addEventListener('click', closeItemPopup); // слушатель попапа "Добавить"
-popupSave.addEventListener('submit', handlePopupSubmit);
-popupItemSave.addEventListener('submit',handlePopupSubmitItem);// слушатель попапа "Добавить"
-
 const initialCards = [
   {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    name: "Архыз",
+    link:
+      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
   },
   {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    name: "Челябинская область",
+    link:
+      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
   },
   {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    name: "Иваново",
+    link:
+      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
   },
   {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    name: "Камчатка",
+    link:
+      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
   },
   {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    name: "Холмогорский район",
+    link:
+      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
   },
   {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  }
+    name: "Байкал",
+    link:
+      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
+  },
 ];
+const popupProfile = document.querySelector(".popup-profile");
+const popupItem = document.querySelector(".popup-item");
+const popupImage = document.querySelector(".popup-image");
 
-const elementContainer = document.querySelector('.elements');
-const addForm = document.querySelector('#add-item')
-  const elementCreate = element =>{                // функция добавления карточки
-  const cardElement = document.querySelector('#templateElement').content.cloneNode(true);
-  cardElement.querySelector('.element__text').textContent = element.name;
-  cardElement.querySelector('.element__foto').src = element.link;
-  cardElement.querySelector('.element__trash').addEventListener('click', evt => {
-    const trash = event.target.closest('.element');         //удаление карточки
-    trash.remove()
-  })
-  const likeButton = cardElement.querySelector('.element__like');   //лайк
-  function likeBtn (evt) {
-    evt.target.classList.toggle('element__like_active')
-  } 
-  likeButton.addEventListener('click',likeBtn);
+const profileName = document.querySelector(".profile__name");
+const hobby = document.querySelector(".profile__hobby");
+const placeInput = document.querySelector("#place");
+const linkInput = document.querySelector("#link");
+const nameInput = document.querySelector("#name");
+const hobbyInput = document.querySelector("#hobby");
 
-  elementContainer.prepend(cardElement);
+const elementContainer = document.querySelector(".elements");
+const addForm = document.querySelector("#add-item");
+
+const imageElement = document.querySelector(".popup-image__element");
+const imageText = document.querySelector(".popup-image__text");
+
+const popupImageClose = document.querySelector("#popup-image-close");
+const popupClose = document.querySelector("#popup-profile-close");
+const popupItemClose = document.querySelector("#popup-item-close"); // кнопка закрытия попапа "Добавить"
+
+const popupOpen = document.querySelector(".profile__edit");
+const popupItemOpen = document.querySelector(".profile__add-button"); // кнопка открытия попапа "Добавить"
+
+const popupSave = document.querySelector(".popup__form");
+const popupItemSave = document.querySelector("#add-item"); // кнопка сохранения попапа "Добавить"
+
+function openPopup(popup) {
+  popup.classList.add("popup_opened");
 }
-initialCards.forEach(elementCreate);
 
-const placeInput = document.querySelector('#place'); // 
-const linkInput = document.querySelector('#link'); 
-addForm.addEventListener('submit', evt => {         // функция созданя карточки
-  event.preventDefault();
-  const placeValue = placeInput.value;
-  const linkValue = linkInput.value;
-  const newElement = {name: placeValue, link: linkValue};
-  elementCreate(newElement);
-  addForm.reset ()
-})
+function editProfileForm() {
+  nameInput.value = profileName.textContent;
+  hobbyInput.value = hobby.textContent;
+  openPopup(popupProfile);
+}
 
+function closePopup(popup) {
+  popup.classList.remove("popup_opened");
+}
 
+function handlePopupSubmit(evt) {
+  // функция создания карточки профиля пользователем
+  evt.preventDefault();
+  profileName.textContent = nameInput.value;
+  hobby.textContent = hobbyInput.value;
+  closePopup(popupProfile);
+}
+function handlePopupSubmitItem(evt) {
+  // функция создания карточки добавления пользователем
+  evt.preventDefault();
+  elementContainer.prepend(elementCreate(linkInput.value, placeInput.value));
+  addForm.reset();
+  closePopup(popupItem);
+}
 
+const elementCreate = (link, name) => {
+  // создание карточки
+  const cardElement = document
+    .querySelector("#templateElement")
+    .content.cloneNode(true);
+  cardElement.querySelector(".element__foto").src = link;
+  cardElement.querySelector(".element__text").textContent = name;
+  cardElement.querySelector(".element__foto").alt = name;
 
+  const trash = cardElement.querySelector(".element__trash"); // кнопка удаления
+  trash.addEventListener("click", trashClick);
+
+  const likeButton = cardElement.querySelector(".element__like"); //кнопка лайка
+  likeButton.addEventListener("click", likeBtn);
+
+  const elementFoto = cardElement.querySelector(".element__foto");
+  elementFoto.addEventListener("click", () => popupImageOpen(link, name)); // слушатель нажатия  на картинку
+  return cardElement;
+};
+initialCards.forEach(function (item) {
+  // добавление карточек из массива
+  elementContainer.append(elementCreate(item.link, item.name));
+});
+
+function trashClick(evt) {
+  // функция удаления слушателей
+  const removeElement = evt.target.closest(".element");
+  const trash = removeElement.querySelector(".element__trash");
+  const likeButton = removeElement.querySelector(".element__like");
+  const elementFoto = removeElement.querySelector(".element__foto");
+  trash.removeEventListener("click", trashClick);
+  likeButton.removeEventListener("click", likeBtn);
+  elementFoto.removeEventListener("click", popupImageOpen);
+  removeElement.remove();
+}
+
+function likeBtn(evt) {
+  // функция лайка
+  evt.target.classList.toggle("element__like_active");
+}
+
+function popupImageOpen(link, name) {
+  // функция открытия поапа картинки
+  imageElement.src = link;
+  imageText.textContent = name;
+  openPopup(popupImage);
+}
+
+popupImageClose.addEventListener("click", () => closePopup(popupImage));
+popupOpen.addEventListener("click", () => openPopup(popupProfile));
+popupItemOpen.addEventListener("click", () => openPopup(popupItem)); // слушатель попапа "кнопки Добавить"
+popupClose.addEventListener("click", () => closePopup(popupProfile));
+popupItemClose.addEventListener("click", () => closePopup(popupItem)); // слушатель попапа "кнопки Добавить"
+popupSave.addEventListener("submit", handlePopupSubmit);
+popupItemSave.addEventListener("submit", handlePopupSubmitItem); // слушатель попапа "кнопки Добавить"

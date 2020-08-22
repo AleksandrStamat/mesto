@@ -17,5 +17,8 @@
   right: 0;
   background: rgba(0, 0, 0, 0.5);
   z-index: 100;
-  display: none;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.3s linear;
+  display: flex;
 }
