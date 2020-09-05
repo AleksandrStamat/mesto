@@ -53,23 +53,34 @@
             aria-label="Закрыть Окно"
           ></button>
           <h2 class="popup__title">Редактировать профиль</h2>
-          <form class="popup__form" id="#edit-profile" name="edit-profile">
+          <form
+            class="popup__form"
+            id="#edit-profile"
+            name="edit-profile"
+            novalidate
+          >
             <input
               name="name"
               type="text"
               id="name"
               class="popup__input popup__input_name"
               placeholder="Введите имя"
+              minlength="2"
+              maxlength="40"
               required
             />
+            <span id="name-error" class="popup__input-error"></span>
             <input
               name="hobby"
               type="text"
               id="hobby"
               class="popup__input popup__input_hobby"
               placeholder="Ваше хобби"
+              minlength="2"
+              maxlength="200"
               required
             />
+            <span id="hobby-error" class="popup__input-error"></span>
             <button
               type="submit"
               id="popup-profile-save"
@@ -90,23 +101,27 @@
             aria-label="Закрыть Окно"
           ></button>
           <h2 class="popup__title">Новое место</h2>
-          <form class="popup__form" id="add-item" name="add-item">
+          <form class="popup__form" id="add-item" name="add-item" novalidate>
             <input
               name="place"
               type="text"
               id="place"
               class="popup__input popup__input_place"
               placeholder="Название"
+              minlength="1"
+              maxlength="30"
               required
             />
+            <span id="place-error" class="popup__input-error"></span>
             <input
               name="link"
-              type="text"
+              type="url"
               id="link"
               class="popup__input popup__input_link"
               placeholder="Ссылка на картинку"
               required
             />
+            <span id="link-error" class="popup__input-error"></span>
             <button
               type="submit"
               id="popup-item-save"
@@ -145,7 +160,7 @@
         </div>
       </article>
     </template>
-
+    <script src="./scripts/validate.js"></script>
     <script src="./scripts/intialCards.js"></script>
     <script src="./scripts/index.js"></script>
   </body>

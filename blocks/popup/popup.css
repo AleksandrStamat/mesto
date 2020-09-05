@@ -9,6 +9,10 @@
 @import url(../popup/__form/popup__form.css);
 @import url(../popup/__button-close/popup__button-close.css);
 @import url(../popup/__button-save/popup__button-save.css);
+@import url(../popup/__input/_error/popup__input_error.css);
+@import url(../popup/__input-error/popup__input-error.css);
+@import url(../popup/__input-error/_active/popup__input-error_active.css);
+@import url(../popup/__button-save/_inactive/popup__button-save_inactive.css);
 .popup {
   position: fixed;
   top: 0;

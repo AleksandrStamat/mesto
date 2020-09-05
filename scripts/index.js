@@ -26,16 +26,22 @@ const popupSave = document.querySelector(".popup__form");
 const popupItemSave = document.querySelector("#add-item"); // кнопка сохранения попапа "Добавить"
 
 function openPopup(popup) {
+  document.addEventListener("keyup", escapeClose);
+  document.addEventListener("click", mouseClose);
   popup.classList.add("popup_opened");
+
 }
 function openFormHandler() {
-  openPopup(popupProfile)
+  openPopup(popupProfile);
   nameInput.value = profileName.textContent;
   hobbyInput.value = hobby.textContent;
 }
 
 function closePopup(popup) {
+  document.removeEventListener("keyup", escapeClose);
+  document.removeEventListener("click", mouseClose);
   popup.classList.remove("popup_opened");
+
 }
 
 function handlePopupSubmit(evt) {
@@ -110,3 +116,23 @@ popupClose.addEventListener("click", () => closePopup(popupProfile));
 popupItemClose.addEventListener("click", () => closePopup(popupItem)); // слушатель попапа "кнопки Добавить"
 popupSave.addEventListener("submit", handlePopupSubmit);
 popupItemSave.addEventListener("submit", handlePopupSubmitItem); // слушатель попапа "кнопки Добавить"
+
+
+// закрытие попапов на нажание Esc и на overlay
+const popupArray = Array.from(document.querySelectorAll(".popup"));
+function escapeClose(evt) {
+  if (evt.key === "Escape") {
+    popupArray.forEach((popup) => {
+      if (popup.classList.contains("popup_opened")) {
+        closePopup(popup);
+      }
+    });
+  }
+}
+
+function mouseClose(evt) {
+  if (evt.target.classList.contains("popup_opened")) {
+    closePopup(evt.target);
+  }
+}
+
