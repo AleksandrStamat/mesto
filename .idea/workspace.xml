@@ -20,14 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cfc79612-7a28-4983-9f0b-a69ec4a01753" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/mesto.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/popup/__input/popup__input.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/__input/popup__input.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blocks/popup/popup.css" beforeDir="false" afterPath="$PROJECT_DIR$/blocks/popup/popup.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/intialCards.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/intialCards.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/validate.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/validate.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,6 +82,7 @@
       <workItem from="1598904529481" duration="846000" />
       <workItem from="1599163269840" duration="647000" />
       <workItem from="1599268146406" duration="384000" />
+      <workItem from="1599315377032" duration="503000" />
     </task>
     <servers />
   </component>
@@ -132,10 +130,10 @@
     <state width="1257" height="183" key="GridCell.Tab.0.right/0.23.1280.735/-289.-1057.1920.1057@0.23.1280.735" timestamp="1599270811106" />
     <state width="1259" height="184" key="GridCell.Tab.0.right/0.23.1280.735@0.23.1280.735" timestamp="1598905468289" />
     <state width="1257" height="183" key="GridCell.Tab.0.right/0.23.1280.777/-289.-1057.1920.1057@0.23.1280.777" timestamp="1599268267357" />
-    <state x="141" y="29" width="999" height="722" key="SettingsEditor" timestamp="1599163440971">
+    <state x="141" y="29" width="999" height="722" key="SettingsEditor" timestamp="1599315594074">
       <screen x="0" y="23" width="1280" height="735" />
     </state>
     <state x="141" y="29" width="999" height="722" key="SettingsEditor/0.23.1280.735/-289.-1057.1920.1057@0.23.1280.735" timestamp="1599163440971" />
-    <state x="141" y="29" key="SettingsEditor/0.23.1280.735@0.23.1280.735" timestamp="1598905460897" />
+    <state x="141" y="29" key="SettingsEditor/0.23.1280.735@0.23.1280.735" timestamp="1599315594074" />
   </component>
 </project>
