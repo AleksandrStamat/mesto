@@ -25,6 +25,9 @@ const popupItemOpen = document.querySelector(".profile__add-button"); // кно�
 const popupSave = document.querySelector(".popup__form");
 const popupItemSave = document.querySelector("#add-item"); // кнопка сохранения попапа "Добавить"
 
+const buttonSaveProfile = document.querySelector("#popup-profile-save");
+const buttonSaveItem = document.querySelector("#popup-item-save");
+
 function openPopup(popup) {
   document.addEventListener("keyup", escapeClose);
   document.addEventListener("click", mouseClose);
@@ -34,6 +37,7 @@ function openFormHandler() {
   openPopup(popupProfile);
   nameInput.value = profileName.textContent;
   hobbyInput.value = hobby.textContent;
+  buttonSaveProfile.classList.remove("popup__button-save_inactive");
 }
 
 function closePopup(popup) {
@@ -52,11 +56,8 @@ function handlePopupSubmit(evt) {
 function handlePopupSubmitItem(evt) {
   // функция создания карточки добавления пользователем
   evt.preventDefault();
-  const buttonSave = document.querySelector('.popup__button-save')
   elementContainer.prepend(createElement(linkInput.value, placeInput.value));
   addForm.reset();
-  buttonSave.setAttribute('disabled','');
-  buttonSave.classList.add('popup__button-save_active');
   closePopup(popupItem);
 }
 
@@ -80,7 +81,8 @@ function openPopupImage(data) {
 }
 const createElement = (data) => {
   // создание карточки
-  const cardElement = document.querySelector("#templateElement")
+  const cardElement = document
+    .querySelector("#templateElement")
     .content.cloneNode(true);
   const elementFoto = cardElement.querySelector(".element__foto");
   elementFoto.addEventListener("click", () => openPopupImage(data)); // слушатель нажатия  на картинку
@@ -96,11 +98,15 @@ const createElement = (data) => {
 initialCards.forEach(function (item) {
   // добавление карточек из массива
   elementContainer.append(createElement(item));
-}); 
+});
 
 popupImageClose.addEventListener("click", () => closePopup(popupImage));
 popupOpen.addEventListener("click", openFormHandler);
-popupItemOpen.addEventListener("click", () => openPopup(popupItem)); // слушатель попапа "кнопки Добавить"
+popupItemOpen.addEventListener("click", () => {
+  buttonSaveItem.classList.add("popup__button-save_inactive");
+  buttonSaveItem.disabled = true;
+  openPopup(popupItem);
+}); // слушатель попапа "кнопки Добавить"
 popupClose.addEventListener("click", () => closePopup(popupProfile));
 popupItemClose.addEventListener("click", () => closePopup(popupItem)); // слушатель попапа "кнопки Добавить"
 popupSave.addEventListener("submit", handlePopupSubmit);
