@@ -37,6 +37,7 @@ function openFormHandler() {
   openPopup(popupProfile);
   nameInput.value = profileName.textContent;
   hobbyInput.value = hobby.textContent;
+  buttonSaveProfile.classList.remove("popup__button-save_inactive");
 }
 
 function closePopup(popup) {
@@ -55,10 +56,13 @@ function handlePopupSubmit(evt) {
 function handlePopupSubmitItem(evt) {
   // функция создания карточки добавления пользователем
   evt.preventDefault();
-  elementContainer.prepend(createElement(linkInput.value, placeInput.value));
+  elementContainer.prepend(
+    createElement({
+      link: linkInput.value,
+      name: placeInput.value,
+    })
+  );
   addForm.reset();
-  buttonSaveItem.classList.add('popup__button-save_inactive');
-  buttonSaveItem.setAttribute('disabled', '');
   closePopup(popupItem);
 }
 
