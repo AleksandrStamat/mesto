@@ -64,11 +64,11 @@ const toggleButtonState = (
 ) => {
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add(inactiveButtonClass);
-    buttonElement.disabled = true;
+    buttonElement.setAttribute("disabled", "disabled");
 
   } else {
     buttonElement.classList.remove(inactiveButtonClass);
-    buttonElement.disabled = false;
+    buttonElement.removeAttribute("disabled", "disabled");
   }
 };
 //валидация для всех форм//

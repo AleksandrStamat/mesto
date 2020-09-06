@@ -29,20 +29,19 @@ const buttonSaveProfile = document.querySelector("#popup-profile-save");
 const buttonSaveItem = document.querySelector("#popup-item-save");
 
 function openPopup(popup) {
-  document.addEventListener("keyup", escapeClose);
-  document.addEventListener("click", mouseClose);
+  document.addEventListener("keyup", closeEscape);
+  document.addEventListener("click", closeMouse);
   popup.classList.add("popup_opened");
 }
 function openFormHandler() {
   openPopup(popupProfile);
   nameInput.value = profileName.textContent;
   hobbyInput.value = hobby.textContent;
-  buttonSaveProfile.classList.remove("popup__button-save_inactive");
 }
 
 function closePopup(popup) {
-  document.removeEventListener("keyup", escapeClose);
-  document.removeEventListener("click", mouseClose);
+  document.removeEventListener("keyup", closeEscape);
+  document.removeEventListener("click", closeMouse);
   popup.classList.remove("popup_opened");
 }
 
@@ -58,6 +57,8 @@ function handlePopupSubmitItem(evt) {
   evt.preventDefault();
   elementContainer.prepend(createElement(linkInput.value, placeInput.value));
   addForm.reset();
+  buttonSaveItem.classList.add('popup__button-save_inactive');
+  buttonSaveItem.setAttribute('disabled', '');
   closePopup(popupItem);
 }
 
@@ -114,7 +115,7 @@ popupItemSave.addEventListener("submit", handlePopupSubmitItem); // слушат
 
 // закрытие попапов на нажание Esc и на overlay
 const popupArray = Array.from(document.querySelectorAll(".popup"));
-function escapeClose(evt) {
+function closeEscape(evt) {
   if (evt.key === "Escape") {
     popupArray.forEach((popup) => {
       if (popup.classList.contains("popup_opened")) {
@@ -124,7 +125,7 @@ function escapeClose(evt) {
   }
 }
 
-function mouseClose(evt) {
+function closeMouse(evt) {
   if (evt.target.classList.contains("popup_opened")) {
     closePopup(evt.target);
   }
