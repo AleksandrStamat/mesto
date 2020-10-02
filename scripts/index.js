@@ -1,3 +1,6 @@
+import { Card } from "./Сard.js";
+import { FormValidator } from "./FormValidator.js";
+
 const popupProfile = document.querySelector(".popup-profile");
 const popupItem = document.querySelector(".popup-item");
 const popupImage = document.querySelector(".popup-image");
@@ -28,6 +31,8 @@ const popupItemSave = document.querySelector("#add-item"); // кнопка со�
 const buttonSaveProfile = document.querySelector("#popup-profile-save");
 const buttonSaveItem = document.querySelector("#popup-item-save");
 
+const formSelector = ".popup__form"; 
+
 function openPopup(popup) {
   document.addEventListener("keyup", closeEscape);
   document.addEventListener("click", closeMouse);
@@ -54,27 +59,17 @@ function handlePopupSubmit(evt) {
   closePopup(popupProfile);
 }
 function handlePopupSubmitItem(evt) {
-  // функция создания карточки добавления пользователем
+  // функция создания карточки пользователем
   evt.preventDefault();
-  elementContainer.prepend(
-    createElement({
-      link: linkInput.value,
-      name: placeInput.value,
-    })
-  );
+  const item = {
+    link: linkInput.value,
+    name: placeInput.value,
+  };
+  const card = new Card(item, "#templateElement");
+  const cardElement = card.generateCard();
+  elementContainer.prepend(cardElement);
   addForm.reset();
   closePopup(popupItem);
-}
-
-function clickTrash(evt) {
-  // функция удаления слушателей
-  const removeElement = evt.target.closest(".element");
-  removeElement.remove();
-}
-
-function likeBtn(evt) {
-  // функция лайка
-  evt.target.classList.toggle("element__like_active");
 }
 
 function openPopupImage(data) {
@@ -84,41 +79,31 @@ function openPopupImage(data) {
   imageText.textContent = data.name;
   openPopup(popupImage);
 }
-const createElement = (data) => {
-  // создание карточки
-  const cardElement = document
-    .querySelector("#templateElement")
-    .content.cloneNode(true);
-  const elementFoto = cardElement.querySelector(".element__foto");
-  elementFoto.addEventListener("click", () => openPopupImage(data)); // слушатель нажатия  на картинку
-  elementFoto.src = data.link;
-  cardElement.querySelector(".element__text").textContent = data.name;
-  elementFoto.alt = data.name;
-  const trash = cardElement.querySelector(".element__trash"); // кнопка удаления
-  trash.addEventListener("click", clickTrash);
-  const likeButton = cardElement.querySelector(".element__like"); //кнопка лайка
-  likeButton.addEventListener("click", likeBtn);
-  return cardElement;
-};
-initialCards.forEach(function (item) {
-  // добавление карточек из массива
-  elementContainer.append(createElement(item));
+// создание теплейта
+initialCards.forEach((item) => {
+  const card = new Card(item, "#templateElement");
+  const cardElement = card.generateCard();
+  elementContainer.prepend(cardElement);
 });
 
-popupImageClose.addEventListener("click", () => closePopup(popupImage));
-popupOpen.addEventListener("click", openFormHandler);
-popupItemOpen.addEventListener("click", () => {
-  buttonSaveItem.classList.add("popup__button-save_inactive");
-  buttonSaveItem.disabled = true;
-  openPopup(popupItem);
-}); // слушатель попапа "кнопки Добавить"
-popupClose.addEventListener("click", () => closePopup(popupProfile));
-popupItemClose.addEventListener("click", () => closePopup(popupItem)); // слушатель попапа "кнопки Добавить"
-popupSave.addEventListener("submit", handlePopupSubmit);
-popupItemSave.addEventListener("submit", handlePopupSubmitItem); // слушатель попапа "кнопки Добавить"
+// валидация форм
+const formList = Array.from(document.querySelectorAll(formSelector));
+const validationObj = {
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__button-save",
+  inactiveButtonClass: "popup__button-save_inactive",
+  inputErrorClass: "popup__input-error",
+  errorClass: "popup__input-error_active",
+};
+formList.forEach((formElement) => {
+const formValidator = new FormValidator(validationObj, formElement);
+formValidator.enableValidation();
+});
 
-// закрытие попапов на нажание Esc и на overlay
+
+// закрытие попапов на нажание Esc и на клик по overlay
 const popupArray = Array.from(document.querySelectorAll(".popup"));
+
 function closeEscape(evt) {
   if (evt.key === "Escape") {
     popupArray.forEach((popup) => {
@@ -134,3 +119,15 @@ function closeMouse(evt) {
     closePopup(evt.target);
   }
 }
+
+popupImageClose.addEventListener("click", () => closePopup(popupImage));
+popupOpen.addEventListener("click", openFormHandler);
+popupItemOpen.addEventListener("click", () => {
+  buttonSaveItem.classList.add("popup__button-save_inactive");
+  buttonSaveItem.disabled = true;
+  openPopup(popupItem);
+}); // слушатель попапа "кнопки Добавить"
+popupClose.addEventListener("click", () => closePopup(popupProfile));
+popupItemClose.addEventListener("click", () => closePopup(popupItem)); // слушатель попапа "кнопки Добавить"
+popupSave.addEventListener("submit", handlePopupSubmit);
+popupItemSave.addEventListener("submit", handlePopupSubmitItem); // слушатель попапа "кнопки Добавить"
