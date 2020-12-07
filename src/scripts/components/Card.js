@@ -40,6 +40,7 @@ export default class Card {
       .removeEventListener("click", this._clickImage);
   }
   _deleteCard() {
+    this._deleteEventListeners();
     this._element.remove();
     this._element = null;
   }
