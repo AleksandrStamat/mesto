@@ -1,18 +1,26 @@
 export default class UserInfo {
-  constructor({ profileNameSelector, profileHobbySelector }) {
-    this._profileNameSelector = document.querySelector(profileNameSelector);
-    this._profileHobbySelector = document.querySelector(profileHobbySelector);
+  constructor({
+    profileNameSelector,
+    profileHobbySelector,
+    profileAvatarSelector,
+  }) {
+    this._profileNameElement = document.querySelector(profileNameSelector);
+    this._profileHobbyElement = document.querySelector(profileHobbySelector);
+    this._profileAvatarElement = document.querySelector(profileAvatarSelector);
   }
 
   getUserInfo() {
     const profileValue = {};
-    profileValue.name = this._profileNameSelector.textContent;
-    profileValue.hobby = this._profileHobbySelector.textContent;
+    profileValue.name = this._profileNameElement.textContent;
+    profileValue.about = this._profileHobbyElement.textContent;
     return profileValue;
   }
-
-  setUserInfo(object) {
-    this._profileNameSelector.textContent = object.name;
-    this._profileHobbySelector.textContent = object.hobby;
+  getUserAvatar() {
+    return this._profileAvatarElement.src;
+  }
+  setUserInfo({ name, about, avatar }) {
+    this._profileNameElement.textContent = name;
+    this._profileHobbyElement.textContent = about;
+    this._profileAvatarElement.src = avatar;
   }
 }

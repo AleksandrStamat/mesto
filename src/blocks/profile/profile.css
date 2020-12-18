@@ -5,6 +5,7 @@
 @import url(../profile/__name/profile__name.css);
 @import url(../profile/__hobby/profile__hobby.css);
 @import url(../profile/__text/profile__text.css);
+@import url(../profile/__edit-avatar/profile__edit-avatar.css);
 .profile {
   padding-top: 36px;
   margin: 0 auto;

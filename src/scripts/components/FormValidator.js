@@ -62,7 +62,15 @@ export default class FormValidator {
       });
     });
   }
-  clearForm() {
+  loading(str) {
+    this._buttonElement.textContent = str;
+    this._buttonElement.disabled = true;
+  }
+  finish(str) {
+    this._buttonElement.textContent = str;
+    this._buttonElement.disabled = false;
+  }
+  clearForm(str) {
     this._toggleButtonState();
     this._inputList.forEach((inputElement) =>
       this._hideInputError(inputElement)

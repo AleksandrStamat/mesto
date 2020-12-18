@@ -17,10 +17,11 @@
       <main>
         <section class="profile">
           <div class="profile__info">
+            <img src="#" alt="Жак-Ив Кусто" class="profile__avatar" />
             <img
-              src="<%=require('./images/image.jpg')%>"
-              alt="Жак-Ив Кусто"
-              class="profile__avatar"
+              src="<%=require('./images/edit.svg')%>"
+              alt="редактировать аватар"
+              class="profile__edit-avatar"
             />
             <div class="profile__text">
               <div>
@@ -72,9 +73,9 @@
               maxlength="40"
               required
             />
-            <span id="name-error" class="popup__input-error"></span>
+            <span id="name-error" class="popup__span"></span>
             <input
-              name="hobby"
+              name="about"
               type="text"
               id="hobby"
               class="popup__input popup__input_hobby"
@@ -83,7 +84,7 @@
               maxlength="200"
               required
             />
-            <span id="hobby-error" class="popup__input-error"></span>
+            <span id="hobby-error" class="popup__span"></span>
             <button
               type="submit"
               id="popup-profile-save"
@@ -109,22 +110,22 @@
               name="name"
               type="text"
               id="place"
-              class="popup__input popup__input_place"
+              class="popup__input popup__input_link"
               placeholder="Название"
               minlength="1"
               maxlength="30"
               required
             />
-            <span id="place-error" class="popup__input-error"></span>
+            <span id="place-error" class="popup__span"></span>
             <input
               name="link"
               type="url"
               id="link"
-              class="popup__input popup__input_link"
+              class="popup__input"
               placeholder="Ссылка на картинку"
               required
             />
-            <span id="link-error" class="popup__input-error"></span>
+            <span id="link-error" class="popup__span"></span>
             <button
               type="submit"
               id="popup-item-save"
@@ -132,6 +133,67 @@
               disabled
             >
               Создать
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="popup popup_confirm">
+        <div class="popup__container popup__container_confirm">
+          <form
+            class="popup__form popup__form_confirm"
+            name="confirm"
+            novalidate
+          >
+            <h2 class="popup__title">Вы уверены?</h2>
+            <button
+              type="button"
+              id="popup-confirm-close"
+              class="popup__button-close"
+              aria-label="Закрыть Окно"
+            ></button>
+            <button
+              type="submit"
+              id="popup__confirmbtn"
+              class="popup__button-save popup__button-save_confirm"
+              aria-label="Да"
+            >
+              Да
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="popup popup_avatar">
+        <div class="popup__container popup__container_avatar">
+          <form
+            class="popup__form popup__form_avatar"
+            name="avatar"
+            id="form-avatar"
+            novalidate
+          >
+            <h2 class="popup__title">Обновить аватар</h2>
+            <input
+              name="avatar"
+              type="url"
+              id="avatar"
+              class="popup__input popup__input_avatar"
+              placeholder="Ссылка на картинку"
+              required
+            />
+            <span id="avatar-error" class="popup__span"></span>
+            <button
+              type="button"
+              id="popup-avatar-close"
+              class="popup__button-close"
+              aria-label="Закрыть Окно"
+            ></button>
+            <button
+              type="submit"
+              class="popup__button-save"
+              aria-label="Сохранить"
+            >
+              Сохранить
             </button>
           </form>
         </div>
@@ -160,7 +222,9 @@
         </div>
         <div class="element__position">
           <h2 class="element__text"></h2>
-          <button class="element__like" type="button" id="like"></button>
+          <button class="element__like" type="button" id="like">
+            <p class="element__like-count"></p>
+          </button>
         </div>
       </article>
     </template>
