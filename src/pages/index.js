@@ -60,6 +60,7 @@ const imagePopup = new PopupWithImage(".popup-image");
 function handleCardClick(card) {
   imagePopup.open(card);
 }
+//!!Функция нажатия на лайк
 function handleLikeClick(id, status, like) {
   api
     .toggleLike(id, status)
@@ -68,6 +69,7 @@ function handleLikeClick(id, status, like) {
     })
     .catch((err) => console.log(err));
 }
+//!!Функция нажатия на корзину для удаления
 function handleDeleteClick(id, deleteCard) {
   confirmPopup.open(id, deleteCard);
 }
@@ -117,6 +119,7 @@ const editProfilePopup = new PopupWithForm(".popup-profile", (object) => {
       console.log(err);
     });
 });
+//!!экземпляр класса с формой для попапа редкатирования аватара
 const editAvatarPopup = new PopupWithForm(".popup_avatar", (object) => {
   formValidatorAvatar.loading("Сохраниние...");
   api
@@ -183,16 +186,3 @@ Promise.all([api.getProfile(), api.getInitialCardgs()])
     cardSection.renderItems(cards);
   })
   .catch((err) => console.log(err));
-
-/* 
-createdAt: "2020-12-18T17:21:25.743Z"
-likes: [{…}]
-link: "https://i.playground.ru/p/g1IIE1sHVdGxcXVj9Jt5Qg.jpeg"
-name: "RDR2"
-owner: {name: "Sergey", about: "GuitarMan", avatar: "https://i.playground.ru/p/VsQbXl7daOuKtgMHwNjqRQ.jpeg", _id: "f9fb6a8b11925be1ef4743e5", cohort: "cohort-18"}
-_id: "5fdce515580f8900dd192f73"
-
-
-{name: "Jacques Cousteau", about: "Sailor, researcher", avatar: "https://pictures.s3.yandex.net/frontend-developer/common/ava.jpg", _id: "fcf53f7e9363e11cc2337d63", cohort: "cohort-18"}
-
-*/
